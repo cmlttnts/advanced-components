@@ -1,8 +1,6 @@
-import { useRef, useState } from "react"
-
 import PropTypes from "prop-types"
 import styled from "@emotion/styled"
-import useOutsideClick from "customHooks/useOutsideClick"
+import { useState } from "react"
 
 /**
  *
@@ -10,24 +8,30 @@ import useOutsideClick from "customHooks/useOutsideClick"
  * @param {object} options array of options in the shape { option1: {}
  */
 
-const DropdownMultiCheckbox = ({ buttonLabel, checkboxes }) => {
+const DropdownMultiCheckbox = ({ buttonLabel, options, setOptions }) => {
   const [active, setActive] = useState(false)
-  const dropDownRef = useRef(null)
-  useOutsideClick(dropDownRef, () => setActive(false))
+  // const dropDownRef = useRef(null)
+  // useOutsideClick(dropDownRef, () => setActive(false))
 
   return (
     <Container>
-      <button>{buttonLabel}</button>
+      <button onClick={() => setActive((old) => !old)}>{buttonLabel}</button>
       <Dropdown active={active}>
-        {checkboxes.optionLabels.map((oLabel, index) => {
-          const rmWhiteSpace = oLabel.replace(/\s/g, "")
+        {options.map((option, index) => {
+          const rmWhiteSpace = option.text.replace(/\s/g, "")
           return (
-            <label htmlFor={rmWhiteSpace}>
+            <label htmlFor={rmWhiteSpace} key={rmWhiteSpace}>
+              {option.text}
               <input
                 type="checkbox"
+                checked={option.active}
                 name={rmWhiteSpace}
                 id={rmWhiteSpace}
-                onChange={() => checkboxes.toggleOption(index)}
+                onChange={() => {
+                  const newOptions = [...options]
+                  newOptions[index].active = !newOptions[index].active
+                  setOptions(newOptions)
+                }}
               />
             </label>
           )
@@ -38,10 +42,13 @@ const DropdownMultiCheckbox = ({ buttonLabel, checkboxes }) => {
 }
 DropdownMultiCheckbox.propTypes = {
   buttonLabel: PropTypes.string,
-  checkboxes: PropTypes.shape({
-    optionLabels: PropTypes.arrayOf(PropTypes.string),
-    toggleOption: PropTypes.func
-  })
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.string,
+      active: PropTypes.bool
+    })
+  ),
+  setOptions: PropTypes.func
 }
 
 const Container = styled.div`

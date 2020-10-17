@@ -23,3 +23,5 @@ export const useOutsideClick = (ref, cb) => {
     }
   }, [nodeExists, callback])
 }
+
+export default useOutsideClick
