@@ -1,6 +1,6 @@
 # Trying to create advanced react components for my personal use
 
-Live @ https://cmlttnts.github.io/advanced-components
+Live @ https://cmlttnts.github.io/advanced-components/
 
 List of components:
 
