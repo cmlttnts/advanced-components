@@ -59,6 +59,9 @@ const Container = styled.div`
   justifty-content: flex-start;
   align-items: flex-start;
   outline: 2px solid pink;
+  & * {
+    font-size: 1.5rem;
+  }
 `
 
 const Dropdown = styled.div`

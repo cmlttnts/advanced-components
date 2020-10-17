@@ -4,7 +4,7 @@ Live @ https://cmlttnts.github.io/advanced-components/
 
 List of components:
 
-- TBD
+- Dropdown Multi-Checkbox
 
 ## Available Scripts
 
