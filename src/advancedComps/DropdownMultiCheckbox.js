@@ -1,6 +1,8 @@
+import { useRef, useState } from "react"
+
 import PropTypes from "prop-types"
 import styled from "@emotion/styled"
-import { useState } from "react"
+import useOutsideClick from "customHooks/useOutsideClick"
 
 /**
  *
@@ -10,11 +12,11 @@ import { useState } from "react"
 
 const DropdownMultiCheckbox = ({ buttonLabel, options, setOptions }) => {
   const [active, setActive] = useState(false)
-  // const dropDownRef = useRef(null)
-  // useOutsideClick(dropDownRef, () => setActive(false))
+  const dropDownContainerRef = useRef(null)
+  useOutsideClick(dropDownContainerRef, () => setActive(false))
 
   return (
-    <Container>
+    <Container ref={dropDownContainerRef}>
       <button onClick={() => setActive((old) => !old)}>{buttonLabel}</button>
       <Dropdown active={active}>
         {options.map((option, index) => {
@@ -56,6 +58,7 @@ const Container = styled.div`
   flex-direction: column;
   justifty-content: flex-start;
   align-items: flex-start;
+  outline: 2px solid pink;
 `
 
 const Dropdown = styled.div`

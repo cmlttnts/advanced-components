@@ -1,40 +1,53 @@
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom"
+import { Link, Route, Switch, useHistory } from "react-router-dom"
+import { compToUrl, componentList, componentUiName } from "componentList"
 
-import DropdownMultiCheckbox from "advancedComps/DropdownMultiCheckbox"
+import CompOption from "helperComps/CompOption"
+import DropdownMultiCheckboxWrapper from "advancedComps/DropdownMultiCheckboxWrapper"
 import { useState } from "react"
 
-const OPTIONAL_FIELDS_INIT_STATUS = [
-  {
-    text: "Option 1",
-    active: false
-  },
-  {
-    text: "Option 2",
-    active: true
-  },
-  {
-    text: "Option 3",
-    active: false
-  }
-]
 function App() {
-  const [options, setOptions] = useState(OPTIONAL_FIELDS_INIT_STATUS)
+  const history = useHistory()
+  const [selectedComp, setSelectedComp] = useState(componentList.default)
   return (
     <div className="App">
-      <h1>Advanced React Components</h1>
-      <Router>
+      <Link to="/">
+        <h1>Advanced React Components</h1>
+      </Link>
+      <select
+        className="comp-picker"
+        name="advancedComps"
+        id="advancedComps"
+        value={selectedComp}
+        onChange={bringComponent}>
+        <CompOption
+          value={componentList.default}
+          disabled
+          label={componentUiName[componentList.default]}
+        />
+        <CompOption
+          value={componentList.dropdownMultiCheckbox}
+          label={componentUiName[componentList.dropdownMultiCheckbox]}
+        />
+      </select>
+      <div className="comp-container">
         <Switch>
-          <Route path="/">
-            <DropdownMultiCheckbox
-              buttonLabel="Toggle Menu"
-              options={options}
-              setOptions={setOptions}
-            />
+          <Route path={compToUrl[componentList.dropdownMultiCheckbox]}>
+            <DropdownMultiCheckboxWrapper />
           </Route>
         </Switch>
-      </Router>
+      </div>
     </div>
   )
+
+  function bringComponent(e) {
+    const url = compToUrl[componentList[e.target.value]]
+    if (url) {
+      history.push(url)
+      setSelectedComp(componentList[e.target.value])
+    } else {
+      throw new Error("Invalid url from component list!")
+    }
+  }
 }
 
 export default App
