@@ -1,4 +1,5 @@
 import { useCallback, useEffect } from "react"
+
 export const useOutsideClick = (ref, cb) => {
   const nodeExists = ref && ref.current
 
