@@ -2,7 +2,7 @@ import { Link, Route, Switch, useHistory } from "react-router-dom"
 import { compToUrl, componentList, componentUiName } from "componentList"
 
 import CompOption from "helperComps/CompOption"
-import DropdownMultiCheckboxWrapper from "advancedComps/DropdownMultiCheckboxWrapper"
+import DropdownMultiCheckboxWrapper from "wrappersForAdvancedComps/DropdownMultiCheckboxWrapper"
 import { useState } from "react"
 
 function App() {

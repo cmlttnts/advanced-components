@@ -15,9 +15,10 @@ const DropdownMultiCheckbox = ({ buttonLabel, options, setOptions }) => {
   const dropDownContainerRef = useRef(null)
   useOutsideClick(dropDownContainerRef, () => setActive(false))
 
+  const togglingLabel = active ? ` ⬆ ${buttonLabel} ⬆ ` : ` ⬇ ${buttonLabel} ⬇ `
   return (
     <Container ref={dropDownContainerRef}>
-      <button onClick={() => setActive((old) => !old)}>{buttonLabel}</button>
+      <button onClick={() => setActive((old) => !old)}>{togglingLabel}</button>
       <Dropdown active={active}>
         {options.map((option, index) => {
           const rmWhiteSpace = option.text.replace(/\s/g, "")
