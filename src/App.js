@@ -10,7 +10,7 @@ function App() {
   const [selectedComp, setSelectedComp] = useState(componentList.default)
   return (
     <div className="App">
-      <Link to="/">
+      <Link to="/" onClick={() => setSelectedComp(componentList.default)}>
         <h1>Advanced React Components</h1>
       </Link>
       <select
