@@ -1,5 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+#build scripts etc.
+/*ignore.patch
+/*ignore.sh
 # user specific
 .env
 .vscode/
