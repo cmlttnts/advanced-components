@@ -1,16 +1,22 @@
+import Dropdown from "helperComps/Dropdown"
 import PropTypes from "prop-types"
 
 /**
  *
- * @param {async function} asyncCb callback that returns a promise with data
- * @param {function} itemOverlayRowCb callback that lays the item on a row
+ * @param {string} url link of the url to fetch data
+ * @param {function} customRowComp component that lays the item in a row
  */
 
-const DropdownSingleSelectPagination = ({ asyncCb, itemOverlayRowCb }) => {
-  return <div>Hello World</div>
+const DropdownSingleSelectPagination = ({ url, customRowComp: CustomRowComp }) => {
+  return (
+    <div>
+      <Dropdown />
+    </div>
+  )
 }
 DropdownSingleSelectPagination.propTypes = {
-  asyncCb: PropTypes.func,
-  itemOverlayRowCb: PropTypes.func
+  url: PropTypes.func,
+  customRowComp: PropTypes.func,
+  pageSize: PropTypes.number
 }
 export default DropdownSingleSelectPagination

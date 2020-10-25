@@ -1,5 +1,6 @@
 import { useRef, useState } from "react"
 
+import Dropdown from "helperComps/Dropdown"
 import PropTypes from "prop-types"
 import styled from "@emotion/styled"
 import useOutsideClick from "customHooks/useOutsideClick"
@@ -63,13 +64,6 @@ const Container = styled.div`
   & * {
     font-size: 1.5rem;
   }
-`
-
-const Dropdown = styled.div`
-  display: ${(props) => (props.active ? "flex" : "none")};
-  flex-direction: column;
-  justifty-content: flex-start;
-  align-items: flex-start;
 `
 
 export default DropdownMultiCheckbox

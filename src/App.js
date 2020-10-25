@@ -10,19 +10,30 @@ function App() {
   return (
     <div className="App">
       <Link to="/" onClick={() => setSelectedComp(defaultOption.name)}>
-        <h1>Advanced React Components</h1>
+        <h1>Advanced React Components And Hooks</h1>
       </Link>
-      <select
-        className="comp-picker"
-        name="advancedComps"
-        id="advancedComps"
-        value={selectedComp}
-        onChange={bringComponent}>
-        <CompOption value={defaultOption.name} disabled label={defaultOption.label} />
-        {COMPS.map((comp) => (
-          <CompOption key={comp.name} value={comp.name} label={comp.label} />
-        ))}
-      </select>
+      <section>
+        <div>
+          <label htmlFor="advancedComps">Components</label>
+          <select
+            className="comp-picker"
+            name="advancedComps"
+            id="advancedComps"
+            value={selectedComp}
+            onChange={bringComponent}>
+            <CompOption value={defaultOption.name} disabled label={defaultOption.label} />
+            {COMPS.map((comp) => (
+              <CompOption key={comp.name} value={comp.name} label={comp.label} />
+            ))}
+          </select>
+        </div>
+        <div>
+          <label htmlFor="advancedHooks">Hooks</label>
+          <select name="advancedHooks" id="advancedHooks">
+            <option value="nothing">TBA</option>
+          </select>
+        </div>
+      </section>
       <div className="comp-container">
         <Switch>
           {COMPS.map((comp) => (

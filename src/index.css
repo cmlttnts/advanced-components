@@ -12,11 +12,23 @@ code {
 
 .App {
   text-align: center;
+  font-size: 1.5rem;
 }
 
-.comp-picker {
-  font-size: 1.5rem;
+section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+label {
+  margin-right: 1rem;
+}
+
+select {
   margin-bottom: 2rem;
+  font-size: 1.5rem;
 }
 
 .comp-container {
