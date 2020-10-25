@@ -1,7 +1,6 @@
 import COMPS from "comps"
 import CompAndUsageContainer from "helperComps/CompAndUsageContainer"
-import DropdownMultiCheckbox from "advancedComps/DropdownMultiCheckbox"
-import { useState } from "react"
+import DropdownSingleSelectPagination from "advancedComps/DropdownSingleSelectPagination"
 
 const INIT_OPTIONS = [
   {
@@ -19,18 +18,13 @@ const INIT_OPTIONS = [
 ]
 
 const DropdownMultiCheckboxWrapper = () => {
-  const [options, setOptions] = useState(INIT_OPTIONS)
-  const compLabel = COMPS.find((comp) => comp.name === "dropdownMultiCheckbox").label
+  const compLabel = COMPS.find((comp) => comp.name === "dropdownSingleSelectPagination").label
 
   return (
     <CompAndUsageContainer>
       <div>
         <h2>{compLabel}</h2>
-        <DropdownMultiCheckbox
-          buttonLabel="Toggle Menu"
-          options={options}
-          setOptions={setOptions}
-        />
+        <DropdownSingleSelectPagination />
       </div>
       <div>
         <h2>Usage</h2>

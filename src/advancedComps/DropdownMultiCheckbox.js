@@ -7,7 +7,7 @@ import useOutsideClick from "customHooks/useOutsideClick"
 /**
  *
  * @param {string} buttonLabel label for the dropdown button
- * @param {object} options array of options in the shape { option1: {}
+ * @param {object[]} options array of options in the shape [{ text: string, active: boolean},...]
  */
 
 const DropdownMultiCheckbox = ({ buttonLabel, options, setOptions }) => {
