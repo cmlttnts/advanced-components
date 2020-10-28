@@ -3,11 +3,12 @@ import PropTypes from "prop-types"
 
 /**
  *
- * @param {string} url link of the url to fetch data
+ * @param {number} pageSize number of items for a page
+ * @param {function} buildUrl function to build the url from page and page size
  * @param {function} customRowComp component that lays the item in a row
  */
 
-const DropdownSingleSelectPagination = ({ url, customRowComp: CustomRowComp }) => {
+const DropdownSingleSelectPagination = ({ pageSize, buildUrl, customRowComp: CustomRowComp }) => {
   return (
     <div>
       <Dropdown />
@@ -15,8 +16,8 @@ const DropdownSingleSelectPagination = ({ url, customRowComp: CustomRowComp }) =
   )
 }
 DropdownSingleSelectPagination.propTypes = {
-  url: PropTypes.func,
-  customRowComp: PropTypes.func,
-  pageSize: PropTypes.number
+  buildUrl: PropTypes.func,
+  pageSize: PropTypes.number,
+  customRowComp: PropTypes.node
 }
 export default DropdownSingleSelectPagination

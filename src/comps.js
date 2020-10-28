@@ -1,4 +1,4 @@
-import DropdownMultiCheckboxWrapper from "wrappersForAdvancedComps/DropdownMultiCheckboxWrapper"
+import DropdownMultiCheckboxWrapper from "wrappers/DropdownMultiCheckboxWrapper"
 
 export const defaultOption = {
   name: "default",

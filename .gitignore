@@ -2,11 +2,11 @@
 
 #build scripts etc.
 /*ignore.*
-/*ignore.*
+
 # user specific
 .env
 .vscode/
-ignored_notes.txt
+
 # dependencies
 /node_modules
 /.pnp

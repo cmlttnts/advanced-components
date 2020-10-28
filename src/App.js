@@ -2,10 +2,13 @@ import COMPS, { defaultOption } from "comps"
 import { Link, Route, Switch, useHistory } from "react-router-dom"
 
 import CompOption from "helperComps/CompOption"
+import useFetch from "customHooks/useFetch"
 import { useState } from "react"
 
 function App() {
   const history = useHistory()
+  const { state } = useFetch("https://jsonplaceholder.typicode.com/todos/1")
+  console.log(state)
   const [selectedComp, setSelectedComp] = useState(defaultOption.name)
   return (
     <div className="App">
