@@ -10,6 +10,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+.App pre {
+  font-size: 1.2rem;
+  white-space: pre-wrap;
+}
+
 .App {
   text-align: center;
   font-size: 1.5rem;
@@ -17,8 +22,8 @@ code {
 
 section {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -36,4 +41,13 @@ select {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+@media screen (min-width: 1000px) {
+  section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
 }

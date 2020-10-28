@@ -1,6 +1,6 @@
 import DropdownMultiCheckboxWrapper from "wrappers/DropdownMultiCheckboxWrapper"
 
-export const defaultOption = {
+export const defaultCompOption = {
   name: "default",
   label: " ⬇ Select a component ⬇ "
 }

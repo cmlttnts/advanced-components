@@ -5,7 +5,7 @@ export const useOutsideClick = (ref, cb) => {
 
   const callback = useCallback(
     (event) => {
-      if (nodeExists && !ref.current.contains(event.target)) {
+      if (nodeExists && !ref?.current?.contains(event.target)) {
         cb(event)
       }
     },

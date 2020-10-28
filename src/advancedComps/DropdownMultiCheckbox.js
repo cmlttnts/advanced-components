@@ -24,7 +24,7 @@ const DropdownMultiCheckbox = ({ buttonLabel, options, setOptions }) => {
         {options.map((option, index) => {
           const rmWhiteSpace = option.text.replace(/\s/g, "")
           return (
-            <label htmlFor={rmWhiteSpace} key={rmWhiteSpace}>
+            <Label htmlFor={rmWhiteSpace} key={rmWhiteSpace}>
               {option.text}
               <input
                 type="checkbox"
@@ -37,7 +37,7 @@ const DropdownMultiCheckbox = ({ buttonLabel, options, setOptions }) => {
                   setOptions(newOptions)
                 }}
               />
-            </label>
+            </Label>
           )
         })}
       </Dropdown>
@@ -60,9 +60,19 @@ const Container = styled.div`
   flex-direction: column;
   justifty-content: flex-start;
   align-items: flex-start;
-  outline: 2px solid pink;
   & * {
     font-size: 1.5rem;
+  }
+`
+const Label = styled.label`
+  display: flex;
+  flex-direction: row;
+  justifty-content: flex-start;
+  align-items: center;
+  margin-left: 10px;
+  & > input {
+    transform: scale(1.4);
+    margin-left: 15px;
   }
 `
 
