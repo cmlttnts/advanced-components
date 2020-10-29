@@ -24,7 +24,7 @@ const Container = styled.div`
   margin: 1rem;
   @media (min-width: 1000px) {
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: flex-start;
     margin-left: 2rem;
     margin-right: 2rem;

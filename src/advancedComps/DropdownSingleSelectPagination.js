@@ -1,8 +1,11 @@
+import { useRef, useState } from "react"
+
 import Dropdown from "helperComps/Dropdown"
+import Label from "helperComps/Label"
 import PropTypes from "prop-types"
 import styled from "@emotion/styled"
 import useFetch from "customHooks/useFetch"
-import { useState } from "react"
+import useOutsideClick from "customHooks/useOutsideClick"
 
 /**
  * @param {number} pageSize number of items for a page
@@ -13,24 +16,42 @@ import { useState } from "react"
  */
 
 const DropdownSingleSelectPagination = ({
+  label = "Select",
+  placeHolder = "",
   pageSize,
   buildUrl,
   dataConfig,
   customRowComp: CustomRowComp,
-  options
+  options = {}
 }) => {
   const [page, setPage] = useState(0)
+  const dRef = useRef(null)
   const { state, setUrl } = useFetch(buildUrl(page, pageSize), { ...options })
+  useOutsideClick(dRef, () => setFocused(false))
+  const [focused, setFocused] = useState(false)
 
   const { items, totalCount } = processData(state.data)
-  console.log(items)
-  console.log(totalCount)
+
   return (
-    <div>
-      <Dropdown>
-        {items.map((item) => (
-          <CustomRowComp item={item} key={item.id} />
-        ))}
+    <div ref={dRef} style={{ outline: "3px solid green" }}>
+      <Label htmlFor="dropdownSingleSelectPagination">
+        {label}
+        <input
+          type="text"
+          placeholder={placeHolder}
+          id="dropdownSingleSelectPagination"
+          onFocus={() => setFocused(true)}
+        />
+      </Label>
+      <Dropdown active={focused}>
+        {!state.isLoading &&
+          state.data &&
+          items.map((item, index) => (
+            <CustomRowComp item={item} key={item.id} index={page * pageSize + index + 1} />
+          ))}
+        {state.isLoading && <span>Loading...</span>}
+        {state.isError && <span> Error</span>}
+        {!state.data && <span>Couldn't load</span>}
         <NavigationRow>
           <button onClick={setPrevPage}>Prev</button>
           <button onClick={setNextPage}>Next</button>
@@ -43,18 +64,21 @@ const DropdownSingleSelectPagination = ({
     const pageNumUpperLimit = Math.ceil(totalCount / pageSize)
     if (page + 1 < pageNumUpperLimit) {
       setPage((p) => p + 1)
-      setUrl(page + 1)
+      setUrl(buildUrl(page + 1, pageSize))
     }
   }
 
   function setPrevPage() {
     if (page > 0) {
       setPage((p) => p - 1)
-      setUrl(page - 1)
+      setUrl(buildUrl(page - 1, pageSize))
     }
   }
 
   function processData(data) {
+    if (!data) {
+      return { items: [], totalCount: 0 }
+    }
     return {
       items: data[dataConfig.items],
       totalCount: data[dataConfig.totalCount]
@@ -68,7 +92,7 @@ DropdownSingleSelectPagination.propTypes = {
     totalCount: PropTypes.string,
     items: PropTypes.string
   }),
-  customRowComp: PropTypes.node,
+  customRowComp: PropTypes.func,
   options: PropTypes.object
 }
 export default DropdownSingleSelectPagination

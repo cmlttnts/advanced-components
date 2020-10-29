@@ -1,6 +1,7 @@
 import { useRef, useState } from "react"
 
 import Dropdown from "helperComps/Dropdown"
+import Label from "helperComps/Label"
 import PropTypes from "prop-types"
 import styled from "@emotion/styled"
 import useOutsideClick from "customHooks/useOutsideClick"
@@ -62,17 +63,6 @@ const Container = styled.div`
   align-items: flex-start;
   & * {
     font-size: 1.5rem;
-  }
-`
-const Label = styled.label`
-  display: flex;
-  flex-direction: row;
-  justifty-content: flex-start;
-  align-items: center;
-  margin-left: 10px;
-  & > input {
-    transform: scale(1.4);
-    margin-left: 15px;
   }
 `
 

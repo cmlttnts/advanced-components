@@ -1,4 +1,5 @@
 import DropdownMultiCheckboxWrapper from "wrappers/DropdownMultiCheckboxWrapper"
+import DropdownSingleSelectPaginationWrapper from "wrappers/DropdownSingleSelectPaginationWrapper"
 
 export const defaultCompOption = {
   name: "default",
@@ -10,12 +11,12 @@ const COMPS = [
     name: "dropdownMultiCheckbox",
     label: "Dropdown Multi-Checkbox",
     Component: DropdownMultiCheckboxWrapper
-  } /* ,
+  },
   {
     name: "dropdownSingleSelectPagination",
     label: "Dropdown Single-Select Pagination",
     Component: DropdownSingleSelectPaginationWrapper
-  } */
+  }
 ]
 
 export default COMPS
