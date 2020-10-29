@@ -3,7 +3,7 @@ import CompAndUsageContainer from "helperComps/CompAndUsageContainer"
 function useOutsideClickWrapper() {
   return (
     <CompAndUsageContainer>
-      <h5>Hello Hooks</h5>
+      <h5>Hooks will be here very soon</h5>
     </CompAndUsageContainer>
   )
 }

@@ -10,12 +10,12 @@ const HOOKS = [
     name: "useOutsideClick",
     label: "useOutsideClick",
     Component: useOutsideClickWrapper
-  } /* ,
+  },
   {
-    name: "dropdownSingleSelectPagination",
-    label: "Dropdown Single-Select Pagination",
-    Component: DropdownSingleSelectPaginationWrapper
-  } */
+    name: "useFetch",
+    label: "useFetch",
+    Component: useOutsideClickWrapper
+  }
 ]
 
 export default HOOKS

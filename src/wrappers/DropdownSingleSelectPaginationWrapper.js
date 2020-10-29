@@ -44,7 +44,7 @@ const DropdownSingleSelectPaginationWrapper = () => {
         <pre style={{ textAlign: "left" }}>
           {`<DropdownSingleSelectPagination
   label="Pokemon"
-  placeholder=""
+  placeholder="click to see the list"
   pageSize={5}
   buildUrl={buildUrl}
   dataConfig={{

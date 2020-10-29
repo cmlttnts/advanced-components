@@ -33,7 +33,7 @@ const DropdownSingleSelectPagination = ({
   const { items, totalCount } = processData(state.data)
 
   return (
-    <div ref={dRef} style={{ outline: "3px solid green" }}>
+    <div ref={dRef}>
       <Label htmlFor="dropdownSingleSelectPagination">
         {label}
         <input
